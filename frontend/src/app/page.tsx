@@ -10,12 +10,9 @@ import {
   useElements,
 } from "@stripe/react-stripe-js";
 
-// Load Stripe with your publishable key
+
 const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY!);
 
-// ----------------------
-// Payment Form Component
-// ----------------------
 function CheckoutForm() {
   const stripe = useStripe();
   const elements = useElements();
@@ -61,13 +58,13 @@ function CheckoutForm() {
       });
 
       if (result.error) {
-        setMessage(`❌ Payment failed: ${result.error.message}`);
+        setMessage(` Payment failed: ${result.error.message}`);
       } else if (result.paymentIntent?.status === "succeeded") {
-        setMessage("✅ Payment successful! Thank you.");
+        setMessage(" Payment successful! Thank you.");
       }
     } catch (error: any) {
       console.error(error);
-      setMessage("❌ Something went wrong while processing payment.");
+      setMessage(" Something went wrong while processing payment.");
     } finally {
       setLoading(false);
     }
@@ -120,7 +117,7 @@ function CheckoutForm() {
       {message && (
         <p
           className={`mt-4 text-center ${
-            message.startsWith("✅") ? "text-green-600" : "text-red-600"
+            message.startsWith("") ? "text-green-600" : "text-red-600"
           }`}
         >
           {message}
