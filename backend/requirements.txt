@@ -1,0 +1,9 @@
+fastapi
+uvicorn[standard]
+stripe
+sqlalchemy
+alembic
+pydantic
+python-dotenv
+psycopg2
+sqlite
